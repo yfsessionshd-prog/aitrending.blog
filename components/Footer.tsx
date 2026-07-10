@@ -1,11 +1,14 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
   return (
     <footer className="border-t border-white/5 bg-panel">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 md:grid-cols-[1.2fr_2fr]">
         <div>
-          <p className="font-display text-2xl font-bold">AI<span className="text-cyan">Trending</span></p>
+          <Link href="/" className="relative block h-14 w-60 overflow-hidden rounded-lg" aria-label="AITrending home">
+            <Image src="/aitrending-logo.png" alt="AITrending" fill sizes="240px" className="object-cover object-center" />
+          </Link>
           <p className="mt-3 max-w-sm text-sm leading-6 text-white/55">Automated AI news, GitHub repos, prompts, agents, tools and practical learning resources.</p>
         </div>
         <div className="grid gap-6 text-sm sm:grid-cols-3">

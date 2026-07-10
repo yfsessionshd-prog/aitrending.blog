@@ -10,10 +10,16 @@ export const metadata: Metadata = {
   title: "AITrending | Premium AI News & Trends",
   description: "Automated AI news, trends, model releases, tools and analysis.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  icons: {
+    icon: "/aitrending-logo.png",
+    shortcut: "/aitrending-logo.png",
+    apple: "/aitrending-logo.png"
+  },
   openGraph: {
     title: "AITrending",
     description: "Premium automated AI news and trends platform.",
-    type: "website"
+    type: "website",
+    images: ["/aitrending-logo.png"]
   }
 };
 
