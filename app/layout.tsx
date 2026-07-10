@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import "./globals.css";
 import { CookieBanner } from "@/components/CookieBanner";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+
+const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "ca-pub-6334111208159981";
 
 export const metadata: Metadata = {
   title: "AITrending | Premium AI News & Trends",
@@ -17,19 +18,18 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
-
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning>
-        {adsenseClient && adsenseClient !== "ca-pub-XXXX" ? (
-          <Script
+      <head>
+        {ADSENSE_CLIENT && ADSENSE_CLIENT !== "ca-pub-XXXX" ? (
+          <script
             async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
             crossOrigin="anonymous"
-            strategy="afterInteractive"
           />
         ) : null}
+      </head>
+      <body suppressHydrationWarning>
         <Header />
         {children}
         <Footer />
