@@ -22,9 +22,6 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/88 to-ink/35" />
         <div className="relative mx-auto grid min-h-[560px] max-w-7xl content-end px-4 pb-12 pt-28">
           <div className="max-w-3xl">
-            <div className="relative mb-7 h-24 w-full max-w-xl overflow-hidden rounded-xl border border-white/10 bg-black/20 shadow-glow">
-              <Image src="/aitrending-logo.png" alt="AITrending" fill priority sizes="(max-width: 768px) 90vw, 560px" className="object-cover object-center" />
-            </div>
             <div className="flex flex-wrap items-center gap-3">
               <span className="rounded-full bg-red-500/15 px-3 py-1 text-xs font-bold text-red-300">LIVE</span>
               <span className="rounded-full bg-cyan/15 px-3 py-1 text-xs font-bold text-cyan">Breaking</span>

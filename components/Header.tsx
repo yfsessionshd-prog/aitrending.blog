@@ -8,8 +8,8 @@ export function Header() {
   return (
     <header className="site-header sticky top-0 z-50 border-b border-white/5 bg-ink/86 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center gap-5 px-4 py-4">
-        <Link href="/" className="relative block h-10 w-44 overflow-hidden rounded-md" aria-label="AITrending home">
-          <Image src="/aitrending-logo.png" alt="AITrending" fill priority sizes="176px" className="object-cover object-center" />
+        <Link href="/" className="relative block h-14 w-64 shrink-0 overflow-hidden rounded-md" aria-label="AITrending home">
+          <Image src="/aitrending-logo.png" alt="AITrending" fill priority sizes="256px" className="object-cover object-center" />
         </Link>
         <nav className="hidden flex-1 items-center gap-5 text-sm font-semibold text-white/68 lg:flex">
           <Link href="/news" className="transition hover:text-cyan">News</Link>
