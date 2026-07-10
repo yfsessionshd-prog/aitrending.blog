@@ -8,22 +8,42 @@ type GeneratedDraft = {
 };
 
 const fallbackImages = {
-  agents: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
-  models: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80",
-  research: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1400&q=80",
-  github: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=1400&q=80",
-  robotics: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1400&q=80",
-  tools: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=80"
+  agents: [
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1400&q=80"
+  ],
+  models: [
+    "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1400&q=80"
+  ],
+  research: [
+    "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=1400&q=80"
+  ],
+  github: [
+    "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1556075798-4825dfaaf498?auto=format&fit=crop&w=1400&q=80"
+  ],
+  robotics: [
+    "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1400&q=80"
+  ],
+  tools: [
+    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1400&q=80"
+  ]
 };
 
 function fallbackImageFor(item: DiscoveredItem) {
   const text = `${item.title} ${item.summary} ${item.category}`.toLowerCase();
-  if (text.includes("agent")) return fallbackImages.agents;
-  if (text.includes("github") || text.includes("open source")) return fallbackImages.github;
-  if (text.includes("robot")) return fallbackImages.robotics;
-  if (text.includes("research") || text.includes("paper") || text.includes("arxiv")) return fallbackImages.research;
-  if (text.includes("tool") || text.includes("software")) return fallbackImages.tools;
-  return fallbackImages.models;
+  const group = text.includes("agent") ? fallbackImages.agents
+    : text.includes("github") || text.includes("open source") ? fallbackImages.github
+      : text.includes("robot") ? fallbackImages.robotics
+        : text.includes("research") || text.includes("paper") || text.includes("arxiv") ? fallbackImages.research
+          : text.includes("tool") || text.includes("software") ? fallbackImages.tools
+            : fallbackImages.models;
+  const hash = [...item.title].reduce((total, char) => total + char.charCodeAt(0), 0);
+  return group[hash % group.length];
 }
 
 function extractJson(value: string) {

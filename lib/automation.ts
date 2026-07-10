@@ -1,4 +1,4 @@
-import { getAllArticles, saveArticles } from "./content-store";
+import { getAllArticles, getGeneratedArticles, saveArticles } from "./content-store";
 import { createArticleFromSignal } from "./generation";
 import { discoverAiSignals } from "./sources";
 import { runToolAutomation } from "./tool-automation";
@@ -26,9 +26,18 @@ export async function runContentPipeline(): Promise<PipelineResult> {
     const tools = await runToolAutomation();
     const existingUrls = new Set(getAllArticles().map((article) => article.sourceUrl).filter(Boolean));
     const freshSignals = signals.filter((signal) => !existingUrls.has(signal.url)).slice(0, Number(process.env.MAX_ARTICLES_PER_RUN || 3));
+    const latestGeneratedAt = Math.max(0, ...getGeneratedArticles().map((article) => Date.parse(article.publishedAt) || 0));
+    const canPublishBriefing = Date.now() - latestGeneratedAt > 10 * 60 * 1000;
+    const signalsToDraft = freshSignals.length || !signals.length || !canPublishBriefing ? freshSignals : [{
+      ...signals[0],
+      id: `briefing:${Date.now()}`,
+      title: `AI briefing: ${signals[0].title}`,
+      summary: `AITrending briefing based on the latest tracked source. ${signals[0].summary}`,
+      publishedAt: new Date().toISOString()
+    }];
     const created = [];
 
-    for (const signal of freshSignals) {
+    for (const signal of signalsToDraft) {
       try {
         created.push(await createArticleFromSignal(signal));
       } catch (error) {
@@ -40,7 +49,7 @@ export async function runContentPipeline(): Promise<PipelineResult> {
 
     return {
       captured: signals.length,
-      filtered: freshSignals.length,
+      filtered: signalsToDraft.length,
       drafted: created.length,
       published: created.length,
       status: errors.length ? "partial" : "ready",
