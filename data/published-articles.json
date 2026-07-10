@@ -1,0 +1,304 @@
+[
+  {
+    "slug": "phase-2-admin-editor-validation-story",
+    "title": "Phase 2 admin editor validation story",
+    "excerpt": "A validation article created through the Phase 2 admin publishing API.",
+    "category": "News",
+    "publishedAt": "2026-07-10T16:26:30.710Z",
+    "readingMinutes": 2,
+    "views": "0",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80",
+    "featured": false,
+    "body": [
+      "This article was created from the admin API.\\n\\nIt validates publishing from the admin panel workflow.\\n\\nThe content store receives the article and exposes it to public pages."
+    ],
+    "sourceName": "AITrending Staff",
+    "tags": [
+      "admin",
+      "phase-2"
+    ]
+  },
+  {
+    "slug": "show-hn-aura-an-llm-coding-harness-that-dogfooded-itself-mreu1m7d",
+    "title": "Show HN: Aura, an LLM coding harness that dogfooded itself",
+    "excerpt": "Hacker News discussion with 3 points.",
+    "category": "AI Models",
+    "publishedAt": "2026-07-10T11:08:43.561Z",
+    "readingMinutes": 2,
+    "views": "0",
+    "image": "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=1400&q=80",
+    "body": [
+      "AITrending detected a relevant artificial intelligence signal from Hacker News. The original item points to Show HN: Aura, an LLM coding harness that dogfooded itself, with enough topical weight to enter the automated monitoring queue.",
+      "The practical relevance comes from its connection to model releases, developer tooling, open-source work, research activity or operational adoption. These signals are tracked together to identify what is gaining momentum across the AI ecosystem.",
+      "This update was selected by AITrending because it connects to active artificial intelligence research, product development or developer tooling. The original source remains linked for verification."
+    ],
+    "sourceUrl": "https://github.com/CarpseDeam/Aura-IDE",
+    "sourceName": "Hacker News",
+    "tags": [
+      "LLM"
+    ]
+  },
+  {
+    "slug": "validity-of-llms-as-data-annotators-amalia-on-authority-mreu1fo4",
+    "title": "Validity of LLMs as data annotators: AMALIA on authority",
+    "excerpt": "A national language model offers a linguistic community its own instrument for measuring what its citizens say and value. Portugal's AMALIA, a publicly funded 9B-parameter model for European Portuguese, appears competitive on agreement alon",
+    "category": "AI Models",
+    "publishedAt": "2026-07-10T11:08:35.092Z",
+    "readingMinutes": 2,
+    "views": "0",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80",
+    "body": [
+      "AITrending detected a relevant artificial intelligence signal from arXiv. The original item points to Validity of LLMs as data annotators: AMALIA on authority, with enough topical weight to enter the automated monitoring queue.",
+      "A national language model offers a linguistic community its own instrument for measuring what its citizens say and value. Portugal's AMALIA, a publicly funded 9B-parameter model for European Portuguese, appears competitive on agreement alone: asked to code the moral foundation of authority, it agrees with trained human coders to within six F1 points of open models eight to thirteen times its size. Yet agreement is reliability, not validity. For theoretical constructs that must be inferred rather than read from surface features, the question is whether the model follows the construct's theory or reaches the right...",
+      "The practical relevance comes from its connection to model releases, developer tooling, open-source work, research activity or operational adoption. These signals are tracked together to identify what is gaining momentum across the AI ecosystem."
+    ],
+    "sourceUrl": "http://arxiv.org/abs/2607.08731v1",
+    "sourceName": "arXiv",
+    "tags": [
+      "LLM"
+    ]
+  },
+  {
+    "slug": "the-illusion-of-equivalency-statistical-characterization-of-quantization-effects-in-llms-mreu1fka",
+    "title": "The Illusion of Equivalency: Statistical Characterization of Quantization Effects in LLMs",
+    "excerpt": "Post-training quantization is widely used to deploy large language models in resource-constrained settings, yet its evaluation relies almost exclusively on accuracy and perplexity. We show that these metrics fail to capture behavioral chang",
+    "category": "AI Models",
+    "publishedAt": "2026-07-10T11:08:34.954Z",
+    "readingMinutes": 2,
+    "views": "0",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80",
+    "body": [
+      "AITrending detected a relevant artificial intelligence signal from arXiv. The original item points to The Illusion of Equivalency: Statistical Characterization of Quantization Effects in LLMs, with enough topical weight to enter the automated monitoring queue.",
+      "Post-training quantization is widely used to deploy large language models in resource-constrained settings, yet its evaluation relies almost exclusively on accuracy and perplexity. We show that these metrics fail to capture behavioral changes induced by quantization. We introduce correctness agreement, a decision-level metric that measures overlap in correct predictions between a base model and its quantized variants, independent of absolute accuracy. Across multiple models and quantization schemes from 8-bit to 2-bit, we find that behavioral divergence emerges under moderate quantization even when task...",
+      "The practical relevance comes from its connection to model releases, developer tooling, open-source work, research activity or operational adoption. These signals are tracked together to identify what is gaining momentum across the AI ecosystem."
+    ],
+    "sourceUrl": "http://arxiv.org/abs/2607.08734v1",
+    "sourceName": "arXiv",
+    "tags": [
+      "LLM"
+    ]
+  },
+  {
+    "slug": "workflow-as-knowledge-semantic-persistence-for-llm-mediated-workflows-mreu1fg4",
+    "title": "Workflow as Knowledge: Semantic Persistence for LLM-Mediated Workflows",
+    "excerpt": "Large language model (LLM) applications increasingly use explicit workflows for tool use, retrieval, branching, checkpointing, and human approval. Existing workflow systems already address many execution concerns. This paper proposes a Lisp",
+    "category": "Research",
+    "publishedAt": "2026-07-10T11:08:34.804Z",
+    "readingMinutes": 2,
+    "views": "0",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1400&q=80",
+    "body": [
+      "AITrending detected a relevant artificial intelligence signal from arXiv. The original item points to Workflow as Knowledge: Semantic Persistence for LLM-Mediated Workflows, with enough topical weight to enter the automated monitoring queue.",
+      "Large language model (LLM) applications increasingly use explicit workflows for tool use, retrieval, branching, checkpointing, and human approval. Existing workflow systems already address many execution concerns. This paper proposes a Lisp-inspired but language-independent conceptual model: symbolic forms, object identity, and live-image thinking are used as explanatory lenses, not implementation commitments. In this model, workflow definitions, workflow instances, inference records, context snapshots, and dependency relations are represented as persistent knowledge objects in a shared knowledge substrate. Its...",
+      "The practical relevance comes from its connection to model releases, developer tooling, open-source work, research activity or operational adoption. These signals are tracked together to identify what is gaining momentum across the AI ecosystem."
+    ],
+    "sourceUrl": "http://arxiv.org/abs/2607.08740v1",
+    "sourceName": "arXiv",
+    "tags": [
+      "LLM"
+    ]
+  },
+  {
+    "slug": "slorr-simple-and-efficient-in-training-low-rank-regularization-mreu18y2",
+    "title": "SLORR: Simple and Efficient In-Training Low-Rank Regularization",
+    "excerpt": "Low-rank factorization is widely used to compress neural networks, but modern models are often not naturally amenable to aggressive factorization without significant accuracy loss. Existing training-time low-rank regularizers can improve co",
+    "category": "AI Models",
+    "publishedAt": "2026-07-10T11:08:26.378Z",
+    "readingMinutes": 2,
+    "views": "0",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80",
+    "body": [
+      "AITrending detected a relevant artificial intelligence signal from arXiv. The original item points to SLORR: Simple and Efficient In-Training Low-Rank Regularization, with enough topical weight to enter the automated monitoring queue.",
+      "Low-rank factorization is widely used to compress neural networks, but modern models are often not naturally amenable to aggressive factorization without significant accuracy loss. Existing training-time low-rank regularizers can improve compressibility, but they often require SVDs of large weight matrices, modify the model architecture (introducing additional trainable parameters), or rely on stateful cached quantities. To address these limitations, we introduce SLORR, a simple, stateless, and architecture-preserving framework for in-training low-rank regularization, instantiated with two main variants based on...",
+      "The practical relevance comes from its connection to model releases, developer tooling, open-source work, research activity or operational adoption. These signals are tracked together to identify what is gaining momentum across the AI ecosystem."
+    ],
+    "sourceUrl": "http://arxiv.org/abs/2607.08754v1",
+    "sourceName": "arXiv",
+    "tags": [
+      "LLM"
+    ]
+  },
+  {
+    "slug": "ideas-have-genomes-benchmarking-scientific-lineage-reasoning-and-lineage-grounded-idea-gen-mreu18u9",
+    "title": "Ideas Have Genomes: Benchmarking Scientific Lineage Reasoning and Lineage-Grounded Idea Generation",
+    "excerpt": "Scientific ideas rarely start from a blank page. They inherit mechanisms, repair known limitations, and recombine pieces of earlier work, much like biological genomes. Current benchmarks still say little about whether AI systems can follow",
+    "category": "Research",
+    "publishedAt": "2026-07-10T11:08:26.241Z",
+    "readingMinutes": 2,
+    "views": "0",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1400&q=80",
+    "body": [
+      "AITrending detected a relevant artificial intelligence signal from arXiv. The original item points to Ideas Have Genomes: Benchmarking Scientific Lineage Reasoning and Lineage-Grounded Idea Generation, with enough topical weight to enter the automated monitoring queue.",
+      "Scientific ideas rarely start from a blank page. They inherit mechanisms, repair known limitations, and recombine pieces of earlier work, much like biological genomes. Current benchmarks still say little about whether AI systems can follow this inheritance structure. We present IdeaGene-Bench (IG-Bench), a benchmark for scientific lineage reasoning and lineage-grounded idea generation. IG-Bench is organized around the IdeaGene framework: each paper or proposal is represented as a set of minimal, typed, evidence-grounded Idea Genome objects, and a GenomeDiff aligns these objects to record inheritance, mutation,...",
+      "The practical relevance comes from its connection to model releases, developer tooling, open-source work, research activity or operational adoption. These signals are tracked together to identify what is gaining momentum across the AI ecosystem."
+    ],
+    "sourceUrl": "http://arxiv.org/abs/2607.08758v1",
+    "sourceName": "arXiv",
+    "tags": [
+      "LLM"
+    ]
+  },
+  {
+    "slug": "railway-secures-100-million-to-challenge-aws-with-ai-native-cloud-infrastructure-mreu18pt",
+    "title": "Railway secures $100 million to challenge AWS with AI-native cloud infrastructure",
+    "excerpt": "Railway , a San Francisco-based cloud platform that has quietly amassed two million developers without spending a dollar on marketing, announced Thursday that it raised $100 million in a Series B funding round, as surging demand for artific",
+    "category": "Open Source",
+    "publishedAt": "2026-07-10T11:08:26.080Z",
+    "readingMinutes": 10,
+    "views": "0",
+    "image": "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=1400&q=80",
+    "body": [
+      "AITrending detected a relevant artificial intelligence signal from VentureBeat AI. The original item points to Railway secures $100 million to challenge AWS with AI-native cloud infrastructure, with enough topical weight to enter the automated monitoring queue.",
+      "Railway , a San Francisco-based cloud platform that has quietly amassed two million developers without spending a dollar on marketing, announced Thursday that it raised $100 million in a Series B funding round, as surging demand for artificial intelligence applications exposes the limitations of legacy cloud infrastructure. TQ Ventures led the round, with participation from FPV Ventures , Redpoint , and Unusual Ventures . The investment values Railway as one of the most significant infrastructure startups to emerge during the AI boom, capitalizing on developer frustration with the complexity and cost of...",
+      "The practical relevance comes from its connection to model releases, developer tooling, open-source work, research activity or operational adoption. These signals are tracked together to identify what is gaining momentum across the AI ecosystem.",
+      "Source: https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challenge-aws-with-ai-native-cloud"
+    ],
+    "sourceUrl": "https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challenge-aws-with-ai-native-cloud",
+    "sourceName": "VentureBeat AI",
+    "tags": [
+      "artificial intelligence",
+      "AI model"
+    ]
+  },
+  {
+    "slug": "fidji-simo-steps-down-from-openai-8217-s-no-2-role-mreu146o",
+    "title": "Fidji Simo steps down from OpenAI&#8217;s no. 2 role",
+    "excerpt": "OpenAI's No. 2 executive, Fidji Simo, is stepping down from her full-time role after her medical leave proved longer than expected - a leadership vacuum that comes at a tricky time as the company eyes a possible IPO and races to catch Anthr",
+    "category": "News",
+    "publishedAt": "2026-07-10T11:08:20.207Z",
+    "readingMinutes": 2,
+    "views": "0",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80",
+    "body": [
+      "AITrending detected a relevant artificial intelligence signal from TechCrunch AI. The original item points to Fidji Simo steps down from OpenAI&#8217;s no. 2 role, with enough topical weight to enter the automated monitoring queue.",
+      "OpenAI's No. 2 executive, Fidji Simo, is stepping down from her full-time role after her medical leave proved longer than expected - a leadership vacuum that comes at a tricky time as the company eyes a possible IPO and races to catch Anthropic in the enterprise market.",
+      "The practical relevance comes from its connection to model releases, developer tooling, open-source work, research activity or operational adoption. These signals are tracked together to identify what is gaining momentum across the AI ecosystem.",
+      "Source: https://techcrunch.com/2026/07/09/fidji-simo-steps-down-from-openais-no-2-role/"
+    ],
+    "sourceUrl": "https://techcrunch.com/2026/07/09/fidji-simo-steps-down-from-openais-no-2-role/",
+    "sourceName": "TechCrunch AI",
+    "tags": [
+      "OpenAI",
+      "Anthropic"
+    ]
+  },
+  {
+    "slug": "eli-labz-cognitive-core-skills-gains-attention-in-ai-open-source-mreu142l",
+    "title": "eli-labz/Cognitive-Core-Skills gains attention in AI open source",
+    "excerpt": "A universal, industry-neutral taxonomy of cognitive core skills (perception, memory, reasoning, planning, action, verification, learning, governance) for LLMs, SLMs, AI agents, and world models - with schemas, 159 skill cards, benchmarks, a",
+    "category": "Open Source",
+    "publishedAt": "2026-07-10T11:08:20.061Z",
+    "readingMinutes": 2,
+    "views": "0",
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
+    "body": [
+      "AITrending detected a relevant artificial intelligence signal from GitHub. The original item points to eli-labz/Cognitive-Core-Skills gains attention in AI open source, with enough topical weight to enter the automated monitoring queue.",
+      "A universal, industry-neutral taxonomy of cognitive core skills (perception, memory, reasoning, planning, action, verification, learning, governance) for LLMs, SLMs, AI agents, and world models - with schemas, 159 skill cards, benchmarks, and CI. Stars: 273.",
+      "The practical relevance comes from its connection to model releases, developer tooling, open-source work, research activity or operational adoption. These signals are tracked together to identify what is gaining momentum across the AI ecosystem.",
+      "Source: https://github.com/eli-labz/Cognitive-Core-Skills"
+    ],
+    "sourceUrl": "https://github.com/eli-labz/Cognitive-Core-Skills",
+    "sourceName": "GitHub",
+    "tags": [
+      "LLM",
+      "AI agent"
+    ]
+  },
+  {
+    "slug": "google-just-redesigned-the-search-box-for-the-first-time-in-25-years-here-s-why-it-matters-mreu13yn",
+    "title": "Google just redesigned the search box for the first time in 25 years - here's why it matters more than you think.",
+    "excerpt": "For a quarter century, the Google search box has been one of the most recognizable interfaces in computing: a thin white rectangle, a blinking cursor, a few typed words, and a list of blue links. On Tuesday, Google will formally retire that",
+    "category": "Research",
+    "publishedAt": "2026-07-10T11:08:19.919Z",
+    "readingMinutes": 11,
+    "views": "0",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1400&q=80",
+    "body": [
+      "AITrending detected a relevant artificial intelligence signal from VentureBeat AI. The original item points to Google just redesigned the search box for the first time in 25 years - here's why it matters more than you think., with enough topical weight to enter the automated monitoring queue.",
+      "For a quarter century, the Google search box has been one of the most recognizable interfaces in computing: a thin white rectangle, a blinking cursor, a few typed words, and a list of blue links. On Tuesday, Google will formally retire that paradigm. At its annual I/O developer conference , Google announced a sweeping redesign of the search box itself - the literal text field where billions of queries begin every day - transforming it from a simple keyword input into a dynamic, AI-driven conversation starter that can accept text, images, PDFs, videos, and even open Chrome tabs as inputs. The company is also...",
+      "The practical relevance comes from its connection to model releases, developer tooling, open-source work, research activity or operational adoption. These signals are tracked together to identify what is gaining momentum across the AI ecosystem.",
+      "Source: https://venturebeat.com/technology/google-just-redesigned-the-search-box-for-the-first-time-in-25-years-heres-why-it-matters-more-than-you-think"
+    ],
+    "sourceUrl": "https://venturebeat.com/technology/google-just-redesigned-the-search-box-for-the-first-time-in-25-years-heres-why-it-matters-more-than-you-think",
+    "sourceName": "VentureBeat AI",
+    "tags": [
+      "AI model",
+      "Google DeepMind",
+      "AI agent"
+    ]
+  },
+  {
+    "slug": "anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no-coding-requir-mretjs7w",
+    "title": "Anthropic launches Cowork, a Claude Desktop agent that works in your files - no coding required",
+    "excerpt": "Anthropic released Cowork on Monday, a new AI agent capability that extends the power of its wildly successful Claude Code tool to non-technical users - and according to company insiders, the team built the entire feature in approximately a",
+    "category": "Research",
+    "publishedAt": "2026-07-10T10:54:51.547Z",
+    "readingMinutes": 9,
+    "views": "0",
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
+    "body": [
+      "AITrending detected a relevant artificial intelligence signal from VentureBeat AI. The original item points to Anthropic launches Cowork, a Claude Desktop agent that works in your files - no coding required, with enough topical weight to enter the automated monitoring queue.",
+      "Anthropic released Cowork on Monday, a new AI agent capability that extends the power of its wildly successful Claude Code tool to non-technical users - and according to company insiders, the team built the entire feature in approximately a week and a half, largely using Claude Code itself. The launch marks a major inflection point in the race to deliver practical AI agents to mainstream users, positioning Anthropic to compete not just with OpenAI and Google in conversational AI, but with Microsoft's Copilot in the burgeoning market for AI-powered productivity tools. \"Cowork lets you complete non-technical tasks...",
+      "The practical relevance comes from its connection to model releases, developer tooling, open-source work, research activity or operational adoption. These signals are tracked together to identify what is gaining momentum across the AI ecosystem.",
+      "Source: https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no"
+    ],
+    "sourceUrl": "https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no",
+    "sourceName": "VentureBeat AI",
+    "tags": [
+      "OpenAI",
+      "Anthropic",
+      "AI agent",
+      "generative AI"
+    ]
+  },
+  {
+    "slug": "claude-code-costs-up-to-200-a-month-goose-does-the-same-thing-for-free-mretjs41",
+    "title": "Claude Code costs up to $200 a month. Goose does the same thing for free.",
+    "excerpt": "The artificial intelligence coding revolution comes with a catch: it's expensive. Claude Code , Anthropic's terminal-based AI agent that can write, debug, and deploy code autonomously, has captured the imagination of software deve",
+    "category": "Open Source",
+    "publishedAt": "2026-07-10T10:54:51.409Z",
+    "readingMinutes": 11,
+    "views": "0",
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
+    "body": [
+      "AITrending detected a relevant artificial intelligence signal from VentureBeat AI. The original item points to Claude Code costs up to $200 a month. Goose does the same thing for free., with enough topical weight to enter the automated monitoring queue.",
+      "The artificial intelligence coding revolution comes with a catch: it's expensive. Claude Code , Anthropic's terminal-based AI agent that can write, debug, and deploy code autonomously, has captured the imagination of software developers worldwide. But its pricing - ranging from $20 to $200 per month depending on usage - has sparked a growing rebellion among the very programmers it aims to serve. Now, a free alternative is gaining traction. Goose , an open-source AI agent developed by Block (the financial technology company formerly known as Square), offers nearly identical functionality to Claude Code but runs...",
+      "The practical relevance comes from its connection to model releases, developer tooling, open-source work, research activity or operational adoption. These signals are tracked together to identify what is gaining momentum across the AI ecosystem.",
+      "Source: https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free"
+    ],
+    "sourceUrl": "https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free",
+    "sourceName": "VentureBeat AI",
+    "tags": [
+      "artificial intelligence",
+      "OpenAI",
+      "Anthropic",
+      "LLM",
+      "AI agent"
+    ]
+  },
+  {
+    "slug": "salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and-google-in-workplace-mretjrpi",
+    "title": "Salesforce rolls out new Slackbot AI agent as it battles Microsoft and Google in workplace AI",
+    "excerpt": "Salesforce on Tuesday launched an entirely rebuilt version of Slackbot , the company's workplace assistant, transforming it from a simple notification tool into what executives describe as a fully powered AI agent capable of searching",
+    "category": "Research",
+    "publishedAt": "2026-07-10T10:54:50.885Z",
+    "readingMinutes": 12,
+    "views": "0",
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
+    "body": [
+      "AITrending detected a relevant artificial intelligence signal from VentureBeat AI. The original item points to Salesforce rolls out new Slackbot AI agent as it battles Microsoft and Google in workplace AI, with enough topical weight to enter the automated monitoring queue.",
+      "Salesforce on Tuesday launched an entirely rebuilt version of Slackbot , the company's workplace assistant, transforming it from a simple notification tool into what executives describe as a fully powered AI agent capable of searching enterprise data, drafting documents, and taking action on behalf of employees. The new Slackbot, now generally available to Business+ and Enterprise+ customers, is Salesforce's most aggressive move yet to position Slack at the center of the emerging \"agentic AI\" movement - where software agents work alongside humans to complete complex tasks. The launch comes as Salesforce attempts...",
+      "The practical relevance comes from its connection to model releases, developer tooling, open-source work, research activity or operational adoption. These signals are tracked together to identify what is gaining momentum across the AI ecosystem.",
+      "Source: https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and"
+    ],
+    "sourceUrl": "https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and",
+    "sourceName": "VentureBeat AI",
+    "tags": [
+      "artificial intelligence",
+      "AI model",
+      "OpenAI",
+      "Anthropic",
+      "LLM"
+    ]
+  }
+]

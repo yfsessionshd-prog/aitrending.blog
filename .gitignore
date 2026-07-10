@@ -1,0 +1,9 @@
+.next
+node_modules
+.env.local
+data/users.json
+data/profiles.json
+data/auth-rate.json
+data/newsletter.json
+data/community-comments.json
+data/community-reports.json

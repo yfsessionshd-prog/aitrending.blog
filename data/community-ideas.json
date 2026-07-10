@@ -1,0 +1,51 @@
+[
+  {
+    "authorId": "9819751f-1cdb-43af-9ad0-c7d49b1335df",
+    "authorName": "Fase 3 Author",
+    "authorAvatar": "",
+    "title": "AI research sprint partner board",
+    "description": "Looking for builders to create a weekly AI research workflow that turns model launches, GitHub projects and prompts into clear public explainers.",
+    "category": "AI/ML",
+    "rolesNeeded": [
+      "Developer",
+      "Research",
+      "Content"
+    ],
+    "contactLink": "https://aitrending.local/team-up",
+    "id": "ca876bb3-65dc-4783-bb88-81634053c1c6",
+    "status": "in_progress",
+    "createdAt": "2026-07-10T16:34:57.444Z"
+  },
+  {
+    "id": "ai-local-business-agent",
+    "authorId": "seed",
+    "authorName": "AITrending Team",
+    "authorAvatar": "",
+    "title": "AI agent for local business lead follow-up",
+    "description": "A lightweight agent that captures website leads, qualifies intent, drafts replies and reminds the owner when a human follow-up is needed.",
+    "category": "AI/ML",
+    "rolesNeeded": [
+      "Developer",
+      "Marketing"
+    ],
+    "contactLink": "team@aitrending.local",
+    "status": "open",
+    "createdAt": "2026-07-10T14:30:34.433Z"
+  },
+  {
+    "id": "prompt-library-for-creators",
+    "authorId": "seed",
+    "authorName": "AITrending Team",
+    "authorAvatar": "",
+    "title": "Prompt library for Spanish-speaking creators",
+    "description": "A curated prompt library for YouTube scripts, thumbnails, shorts, newsletters and research workflows.",
+    "category": "Content",
+    "rolesNeeded": [
+      "Designer",
+      "Content"
+    ],
+    "contactLink": "",
+    "status": "in_progress",
+    "createdAt": "2026-07-10T11:30:34.433Z"
+  }
+]
