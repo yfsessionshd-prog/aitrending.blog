@@ -1,5 +1,4 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { readStore, writeStore } from "./file-store";
 
 export type Campaign = {
   id: string;
@@ -25,29 +24,6 @@ export type SiteSettings = {
   openRouterMasked: string;
   adsenseMasked: string;
 };
-
-const campaignsPath = join(process.cwd(), "data", "campaigns.json");
-const settingsPath = join(process.cwd(), "data", "settings.json");
-
-function ensureFile(path: string, fallback: unknown) {
-  const directory = dirname(path);
-  if (!existsSync(directory)) mkdirSync(directory, { recursive: true });
-  if (!existsSync(path)) writeFileSync(path, JSON.stringify(fallback, null, 2), "utf8");
-}
-
-function readJson<T>(path: string, fallback: T): T {
-  ensureFile(path, fallback);
-  try {
-    const raw = readFileSync(path, "utf8").replace(/^\uFEFF/, "").trim();
-    return raw ? JSON.parse(raw) as T : fallback;
-  } catch {
-    return fallback;
-  }
-}
-
-function writeJson(path: string, data: unknown) {
-  writeFileSync(path, JSON.stringify(data, null, 2), "utf8");
-}
 
 const seedCampaigns: Campaign[] = [
   {
@@ -77,20 +53,20 @@ const seedSettings: SiteSettings = {
 };
 
 export function getCampaigns() {
-  return readJson<Campaign[]>(campaignsPath, seedCampaigns);
+  return readStore<Campaign[]>("campaigns.json", seedCampaigns);
 }
 
 export function saveCampaigns(campaigns: Campaign[]) {
-  writeJson(campaignsPath, campaigns);
+  writeStore("campaigns.json", campaigns);
   return campaigns;
 }
 
 export function getSettings() {
-  return readJson<SiteSettings>(settingsPath, seedSettings);
+  return readStore<SiteSettings>("settings.json", seedSettings);
 }
 
 export function saveSettings(settings: SiteSettings) {
-  writeJson(settingsPath, settings);
+  writeStore("settings.json", settings);
   return settings;
 }
 

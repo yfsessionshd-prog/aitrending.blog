@@ -1,5 +1,7 @@
 import { getAllArticles } from "@/lib/content-store";
 
+export const dynamic = "force-dynamic";
+
 export function GET() {
   const site = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
   const articles = getAllArticles();

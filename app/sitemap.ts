@@ -3,6 +3,8 @@ import { getAllArticles } from "@/lib/content-store";
 import { categories } from "@/lib/data";
 import { aiModels, aiTools, topics } from "@/lib/public-data";
 
+export const dynamic = "force-dynamic";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const site = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
   const articles = getAllArticles();

@@ -2,6 +2,8 @@ import { ArticleCard } from "@/components/ArticleCard";
 import { NativeSponsor } from "@/components/NativeSponsor";
 import { getAllArticles } from "@/lib/content-store";
 
+export const dynamic = "force-dynamic";
+
 export default function NewsPage() {
   const articles = getAllArticles();
 

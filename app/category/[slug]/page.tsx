@@ -2,6 +2,8 @@ import { ArticleCard } from "@/components/ArticleCard";
 import { getAllArticles } from "@/lib/content-store";
 import { categories } from "@/lib/data";
 
+export const dynamic = "force-dynamic";
+
 export function generateStaticParams() {
   return categories.map((category) => ({ slug: category.toLowerCase().replaceAll(" ", "-") }));
 }

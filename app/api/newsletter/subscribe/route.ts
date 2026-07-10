@@ -1,7 +1,4 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
-
-const file = join(process.cwd(), "data", "newsletter.json");
+import { readStore, writeStore } from "@/lib/file-store";
 
 function isEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -15,11 +12,9 @@ export async function POST(request: Request) {
     return Response.json({ error: "Invalid email" }, { status: 400 });
   }
 
-  const directory = dirname(file);
-  if (!existsSync(directory)) mkdirSync(directory, { recursive: true });
-  const current = existsSync(file) ? JSON.parse(readFileSync(file, "utf8")) as string[] : [];
+  const current = readStore<string[]>("newsletter.json", []);
   const next = Array.from(new Set([...current, email]));
-  writeFileSync(file, JSON.stringify(next, null, 2), "utf8");
+  writeStore("newsletter.json", next);
 
   return Response.json({ ok: true, subscribers: next.length });
 }

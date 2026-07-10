@@ -1,5 +1,4 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { readStore, writeStore } from "./file-store";
 
 export type IdeaStatus = "open" | "in_progress" | "complete" | "hidden";
 export type IdeaCategory = "App" | "Web" | "AI/ML" | "Content" | "Other";
@@ -40,10 +39,6 @@ export type CommunityReport = {
   createdAt: string;
 };
 
-const ideasPath = join(process.cwd(), "data", "community-ideas.json");
-const commentsPath = join(process.cwd(), "data", "community-comments.json");
-const reportsPath = join(process.cwd(), "data", "community-reports.json");
-
 const seedIdeas: CommunityIdea[] = [
   {
     id: "ai-local-business-agent",
@@ -73,32 +68,12 @@ const seedIdeas: CommunityIdea[] = [
   }
 ];
 
-function ensureFile(path: string, fallback: unknown) {
-  const directory = dirname(path);
-  if (!existsSync(directory)) mkdirSync(directory, { recursive: true });
-  if (!existsSync(path)) writeFileSync(path, JSON.stringify(fallback, null, 2), "utf8");
-}
-
-function readJson<T>(path: string, fallback: T): T {
-  ensureFile(path, fallback);
-  try {
-    const raw = readFileSync(path, "utf8").replace(/^\uFEFF/, "").trim();
-    return raw ? JSON.parse(raw) as T : fallback;
-  } catch {
-    return fallback;
-  }
-}
-
-function writeJson(path: string, data: unknown) {
-  writeFileSync(path, JSON.stringify(data, null, 2), "utf8");
-}
-
 export function getIdeas() {
-  return readJson<CommunityIdea[]>(ideasPath, seedIdeas).filter((idea) => !idea.hidden && idea.status !== "hidden").sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt));
+  return readStore<CommunityIdea[]>("community-ideas.json", seedIdeas).filter((idea) => !idea.hidden && idea.status !== "hidden").sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt));
 }
 
 export function getAllIdeasForAdmin() {
-  return readJson<CommunityIdea[]>(ideasPath, seedIdeas).sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt));
+  return readStore<CommunityIdea[]>("community-ideas.json", seedIdeas).sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt));
 }
 
 export function getIdea(id: string) {
@@ -106,11 +81,11 @@ export function getIdea(id: string) {
 }
 
 export function getComments(ideaId: string) {
-  return readJson<CommunityComment[]>(commentsPath, []).filter((comment) => comment.ideaId === ideaId && !comment.hidden).sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt));
+  return readStore<CommunityComment[]>("community-comments.json", []).filter((comment) => comment.ideaId === ideaId && !comment.hidden).sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt));
 }
 
 export function getReports() {
-  return readJson<CommunityReport[]>(reportsPath, []).sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt));
+  return readStore<CommunityReport[]>("community-reports.json", []).sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt));
 }
 
 export function canPostIdeaToday(authorId: string) {
@@ -120,7 +95,7 @@ export function canPostIdeaToday(authorId: string) {
 
 export function createIdea(input: Omit<CommunityIdea, "id" | "status" | "createdAt">) {
   if (!canPostIdeaToday(input.authorId)) throw new Error("Daily idea limit reached.");
-  const ideas = readJson<CommunityIdea[]>(ideasPath, seedIdeas);
+  const ideas = readStore<CommunityIdea[]>("community-ideas.json", seedIdeas);
   const idea: CommunityIdea = {
     ...input,
     id: crypto.randomUUID(),
@@ -131,34 +106,34 @@ export function createIdea(input: Omit<CommunityIdea, "id" | "status" | "created
     status: "open",
     createdAt: new Date().toISOString()
   };
-  writeJson(ideasPath, [idea, ...ideas]);
+  writeStore("community-ideas.json", [idea, ...ideas]);
   return idea;
 }
 
 export function updateIdeaStatus(ideaId: string, authorId: string, status: IdeaStatus) {
-  const ideas = readJson<CommunityIdea[]>(ideasPath, seedIdeas);
+  const ideas = readStore<CommunityIdea[]>("community-ideas.json", seedIdeas);
   const index = ideas.findIndex((idea) => idea.id === ideaId);
   if (index === -1) throw new Error("Idea not found.");
   if (ideas[index].authorId !== authorId) throw new Error("Only the author can update this idea.");
   ideas[index] = { ...ideas[index], status };
-  writeJson(ideasPath, ideas);
+  writeStore("community-ideas.json", ideas);
   return ideas[index];
 }
 
 export function addComment(input: Omit<CommunityComment, "id" | "createdAt">) {
-  const comments = readJson<CommunityComment[]>(commentsPath, []);
+  const comments = readStore<CommunityComment[]>("community-comments.json", []);
   const comment: CommunityComment = {
     ...input,
     id: crypto.randomUUID(),
     content: input.content.slice(0, 1000),
     createdAt: new Date().toISOString()
   };
-  writeJson(commentsPath, [...comments, comment]);
+  writeStore("community-comments.json", [...comments, comment]);
   return comment;
 }
 
 export function addReport(input: Omit<CommunityReport, "id" | "status" | "createdAt">) {
-  const reports = readJson<CommunityReport[]>(reportsPath, []);
+  const reports = readStore<CommunityReport[]>("community-reports.json", []);
   const report: CommunityReport = {
     ...input,
     id: crypto.randomUUID(),
@@ -166,30 +141,30 @@ export function addReport(input: Omit<CommunityReport, "id" | "status" | "create
     status: "pending",
     createdAt: new Date().toISOString()
   };
-  writeJson(reportsPath, [report, ...reports]);
+  writeStore("community-reports.json", [report, ...reports]);
   return report;
 }
 
 export function moderateReport(reportId: string, action: ReportStatus) {
-  const reports = readJson<CommunityReport[]>(reportsPath, []);
+  const reports = readStore<CommunityReport[]>("community-reports.json", []);
   const report = reports.find((item) => item.id === reportId);
   if (!report) throw new Error("Report not found.");
   report.status = action;
 
   if (action === "hidden" || action === "deleted") {
     if (report.targetType === "idea") {
-      const ideas = readJson<CommunityIdea[]>(ideasPath, seedIdeas);
+      const ideas = readStore<CommunityIdea[]>("community-ideas.json", seedIdeas);
       const idea = ideas.find((item) => item.id === report.targetId);
       if (idea) idea.hidden = true;
-      writeJson(ideasPath, ideas);
+      writeStore("community-ideas.json", ideas);
     } else {
-      const comments = readJson<CommunityComment[]>(commentsPath, []);
+      const comments = readStore<CommunityComment[]>("community-comments.json", []);
       const comment = comments.find((item) => item.id === report.targetId);
       if (comment) comment.hidden = true;
-      writeJson(commentsPath, comments);
+      writeStore("community-comments.json", comments);
     }
   }
 
-  writeJson(reportsPath, reports);
+  writeStore("community-reports.json", reports);
   return report;
 }

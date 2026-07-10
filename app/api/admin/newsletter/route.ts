@@ -1,8 +1,5 @@
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
 import { getCurrentUser, isAdminRole } from "@/lib/auth-store";
-
-const file = join(process.cwd(), "data", "newsletter.json");
+import { readStore, writeStore } from "@/lib/file-store";
 
 async function requireAdmin() {
   const user = await getCurrentUser();
@@ -10,13 +7,7 @@ async function requireAdmin() {
 }
 
 function readSubscribers(): string[] {
-  if (!existsSync(file)) return [];
-  try {
-    const raw = readFileSync(file, "utf8").replace(/^\uFEFF/, "").trim();
-    return raw ? JSON.parse(raw) as string[] : [];
-  } catch {
-    return [];
-  }
+  return readStore<string[]>("newsletter.json", []);
 }
 
 export async function GET() {
@@ -32,6 +23,6 @@ export async function DELETE(request: Request) {
   const email = searchParams.get("email");
   if (!email) return Response.json({ error: "email required" }, { status: 400 });
   const next = readSubscribers().filter((item) => item !== email);
-  writeFileSync(file, JSON.stringify(next, null, 2), "utf8");
+  writeStore("newsletter.json", next);
   return Response.json({ ok: true });
 }

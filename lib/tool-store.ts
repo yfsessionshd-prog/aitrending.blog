@@ -1,5 +1,4 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { readStore, writeStore } from "./file-store";
 import type { GitHubRepo, IdeaItem, PromptItem } from "./types";
 
 type ToolStore = {
@@ -8,8 +7,6 @@ type ToolStore = {
   ideas: IdeaItem[];
   updatedAt: string;
 };
-
-const storePath = join(process.cwd(), "data", "tool-radar.json");
 
 const seed: ToolStore = {
   updatedAt: new Date().toISOString(),
@@ -52,27 +49,14 @@ const seed: ToolStore = {
   ]
 };
 
-function ensureStore() {
-  const directory = dirname(storePath);
-  if (!existsSync(directory)) mkdirSync(directory, { recursive: true });
-  if (!existsSync(storePath)) writeFileSync(storePath, JSON.stringify(seed, null, 2), "utf8");
-}
-
 export function getToolStore(): ToolStore {
-  ensureStore();
-  try {
-    const raw = readFileSync(storePath, "utf8").replace(/^\uFEFF/, "").trim();
-    if (!raw) return seed;
-    const parsed = JSON.parse(raw) as ToolStore;
-    return {
-      updatedAt: parsed.updatedAt || new Date().toISOString(),
-      repos: Array.isArray(parsed.repos) ? parsed.repos : [],
-      prompts: Array.isArray(parsed.prompts) && parsed.prompts.length ? parsed.prompts : seed.prompts,
-      ideas: Array.isArray(parsed.ideas) && parsed.ideas.length ? parsed.ideas : seed.ideas
-    };
-  } catch {
-    return seed;
-  }
+  const parsed = readStore<ToolStore>("tool-radar.json", seed);
+  return {
+    updatedAt: parsed.updatedAt || new Date().toISOString(),
+    repos: Array.isArray(parsed.repos) ? parsed.repos : [],
+    prompts: Array.isArray(parsed.prompts) && parsed.prompts.length ? parsed.prompts : seed.prompts,
+    ideas: Array.isArray(parsed.ideas) && parsed.ideas.length ? parsed.ideas : seed.ideas
+  };
 }
 
 export function saveToolStore(next: Partial<ToolStore>) {
@@ -84,6 +68,6 @@ export function saveToolStore(next: Partial<ToolStore>) {
     ideas: next.ideas || current.ideas
   };
 
-  writeFileSync(storePath, JSON.stringify(merged, null, 2), "utf8");
+  writeStore("tool-radar.json", merged);
   return merged;
 }

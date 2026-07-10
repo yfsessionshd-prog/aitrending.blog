@@ -6,6 +6,8 @@ import { ArticleCard } from "@/components/ArticleCard";
 import { getAllArticles, findStoredArticle } from "@/lib/content-store";
 import { cleanText } from "@/lib/text";
 
+export const dynamic = "force-dynamic";
+
 export function generateStaticParams() {
   const articles = getAllArticles();
   return articles.map((article) => ({ slug: article.slug }));

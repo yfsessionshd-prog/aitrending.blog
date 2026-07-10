@@ -1,8 +1,7 @@
 import bcrypt from "bcryptjs";
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { readStore, writeStore } from "./file-store";
 
 export type UserRole = "user" | "editor" | "author" | "moderator" | "admin" | "superadmin";
 
@@ -29,38 +28,14 @@ export type UserProfile = {
   bookmarks: string[];
 };
 
-const usersPath = join(process.cwd(), "data", "users.json");
-const profilesPath = join(process.cwd(), "data", "profiles.json");
-const ratePath = join(process.cwd(), "data", "auth-rate.json");
 const sessionCookie = "aitrending_session";
 
-function ensureFile(path: string, fallback: unknown) {
-  const directory = dirname(path);
-  if (!existsSync(directory)) mkdirSync(directory, { recursive: true });
-  if (!existsSync(path)) writeFileSync(path, JSON.stringify(fallback, null, 2), "utf8");
-}
-
-function readJson<T>(path: string, fallback: T): T {
-  ensureFile(path, fallback);
-  try {
-    const raw = readFileSync(path, "utf8").replace(/^\uFEFF/, "").trim();
-    return raw ? JSON.parse(raw) as T : fallback;
-  } catch {
-    return fallback;
-  }
-}
-
-function writeJson(path: string, data: unknown) {
-  ensureFile(path, []);
-  writeFileSync(path, JSON.stringify(data, null, 2), "utf8");
-}
-
 export function getUsers() {
-  return readJson<StoredUser[]>(usersPath, []);
+  return readStore<StoredUser[]>("users.json", []);
 }
 
 export function getProfiles() {
-  return readJson<UserProfile[]>(profilesPath, []);
+  return readStore<UserProfile[]>("profiles.json", []);
 }
 
 export function getProfile(userId: string) {
@@ -80,17 +55,17 @@ export function isAdminRole(role: UserRole) {
 }
 
 export function checkRateLimit(key: string) {
-  const bucket = readJson<Record<string, { count: number; resetAt: number }>>(ratePath, {});
+  const bucket = readStore<Record<string, { count: number; resetAt: number }>>("auth-rate.json", {});
   const now = Date.now();
   const current = bucket[key];
   if (!current || current.resetAt < now) {
     bucket[key] = { count: 1, resetAt: now + 15 * 60 * 1000 };
-    writeJson(ratePath, bucket);
+    writeStore("auth-rate.json", bucket);
     return true;
   }
   if (current.count >= 8) return false;
   current.count += 1;
-  writeJson(ratePath, bucket);
+  writeStore("auth-rate.json", bucket);
   return true;
 }
 
@@ -111,7 +86,7 @@ export async function createUser(input: { email: string; password: string; name:
     lastActivity: now
   };
   users.push(user);
-  writeJson(usersPath, users);
+  writeStore("users.json", users);
 
   const profiles = getProfiles();
   profiles.push({
@@ -125,7 +100,7 @@ export async function createUser(input: { email: string; password: string; name:
     readingHistory: [],
     bookmarks: []
   });
-  writeJson(profilesPath, profiles);
+  writeStore("profiles.json", profiles);
   return user;
 }
 
@@ -185,7 +160,7 @@ export function updateProfile(userId: string, patch: Partial<UserProfile>) {
   const index = profiles.findIndex((profile) => profile.userId === userId);
   if (index === -1) throw new Error("Profile not found.");
   profiles[index] = { ...profiles[index], ...patch, userId };
-  writeJson(profilesPath, profiles);
+  writeStore("profiles.json", profiles);
   return profiles[index];
 }
 
@@ -202,7 +177,7 @@ export function updateUserRole(userId: string, role: UserRole) {
   const index = users.findIndex((user) => user.id === userId);
   if (index === -1) throw new Error("User not found.");
   users[index] = { ...users[index], role };
-  writeJson(usersPath, users);
+  writeStore("users.json", users);
   return users[index];
 }
 
@@ -211,6 +186,6 @@ export function suspendUser(userId: string, suspended: boolean) {
   const index = users.findIndex((user) => user.id === userId);
   if (index === -1) throw new Error("User not found.");
   users[index] = { ...users[index], suspended };
-  writeJson(usersPath, users);
+  writeStore("users.json", users);
   return users[index];
 }

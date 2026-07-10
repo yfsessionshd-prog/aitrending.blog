@@ -6,6 +6,8 @@ import { getAllArticles } from "@/lib/content-store";
 import Image from "next/image";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 export default function HomePage() {
   const articles = getAllArticles();
   const featured = articles.find((article) => article.featured) || articles[0];

@@ -1,27 +1,11 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
 import { articles as seedArticles } from "./data";
+import { readStore, writeStore } from "./file-store";
 import { explainers } from "./public-data";
 import type { Article } from "./types";
 
-const storePath = join(process.cwd(), "data", "published-articles.json");
-
-function ensureStore() {
-  const directory = dirname(storePath);
-  if (!existsSync(directory)) mkdirSync(directory, { recursive: true });
-  if (!existsSync(storePath)) writeFileSync(storePath, "[]", "utf8");
-}
-
 export function getGeneratedArticles(): Article[] {
-  ensureStore();
-  try {
-    const raw = readFileSync(storePath, "utf8").replace(/^\uFEFF/, "").trim();
-    if (!raw) return [];
-    const parsed = JSON.parse(raw) as Article[];
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
-  }
+  const parsed = readStore<Article[]>("published-articles.json", []);
+  return Array.isArray(parsed) ? parsed : [];
 }
 
 export function getAllArticles(): Article[] {
@@ -42,7 +26,6 @@ export function findStoredArticle(slug: string) {
 }
 
 export function saveArticles(newArticles: Article[]) {
-  ensureStore();
   const current = getGeneratedArticles();
   const bySlug = new Map<string, Article>();
 
@@ -51,6 +34,6 @@ export function saveArticles(newArticles: Article[]) {
   }
 
   const next = Array.from(bySlug.values()).sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt)).slice(0, 250);
-  writeFileSync(storePath, JSON.stringify(next, null, 2), "utf8");
+  writeStore("published-articles.json", next);
   return next;
 }
